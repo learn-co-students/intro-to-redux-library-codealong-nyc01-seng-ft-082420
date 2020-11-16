@@ -5,6 +5,7 @@ import './App.css';
 class App extends Component {
 	handleOnClick = event => {
 		this.props.increaseCount();
+		console.log(this.props)
 	};
 
 	render() {
@@ -17,19 +18,17 @@ class App extends Component {
 	}
 }
 
-const mapStateToProps = state => {
+const msp = state => {
 	return {
 		items: state.items
 	};
+	
 };
 
-const mapDispatchToProps = dispatch => {
+const mdp = dispatch => {
 	return {
 		increaseCount: () => dispatch({ type: 'INCREASE_COUNT' })
 	};
 };
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(App);
+export default connect(msp,mdp)(App);
